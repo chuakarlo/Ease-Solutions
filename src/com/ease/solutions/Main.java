@@ -30,8 +30,10 @@ public class Main {
                 map.traverse(matrix, root);
                 
                 temp.add(map.getTempPath());
+                
+                System.out.println();
 
-                System.out.println(map.getTempPath());
+                System.out.println(temp);
             }
         }
         

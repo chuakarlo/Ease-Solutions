@@ -31,9 +31,10 @@ public class MapUtils {
 
         for (int i = 0; i < neighbors.size(); i++) {
             int index = (4 * neighbors.get(i).x) + neighbors.get(i).y;
-            System.out.println("qwe " + Main.temp);
-            if (temp.size() - 1 >= index && Main.temp.get(index) != null) {
-                st.addAll(temp);
+
+            if (Main.temp.size() - 1 >= index && Main.temp.get(index) != null) {
+                if (st.get(st.size() - 1) > Main.temp.get(i).get(0))
+                    st.addAll(Main.temp.get(index));
             } else {
                 traverse(matrix, neighbors.get(i));
             }
@@ -82,6 +83,8 @@ public class MapUtils {
 
             st.remove(st.size() - 1);
         }
+
+        // System.out.println("qwe " + temp);
     }
 
     public List<Integer> getMaxPath() {
