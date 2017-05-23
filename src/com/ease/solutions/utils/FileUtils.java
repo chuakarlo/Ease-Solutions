@@ -45,6 +45,10 @@ public class FileUtils {
             }
         }
     }
+    
+    public int[][] getMatrix() {
+        return matrix;
+    }
 
     @Override
     public String toString() {
