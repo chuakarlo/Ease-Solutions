@@ -33,7 +33,9 @@ public class Main {
             }
         }
 
-        System.out.println("Max: " + map.getMaxPath());
+        System.out.println("Length of calculated path: " + map.getMaxPath().size());
+        System.out.println("Drop of calculated path: " + (map.getMaxPath().get(0) - map.getMaxPath().get(map.getMaxPath().size()-1)));
+        System.out.println("Calculated Path: " + map.getMaxPath());
 
         long endTime = System.nanoTime();
         System.out.println("Took " + (endTime - startTime) / 1000000000 + " s");

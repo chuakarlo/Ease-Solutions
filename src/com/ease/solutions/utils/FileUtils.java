@@ -31,10 +31,14 @@ public class FileUtils {
 
                 // Lazy instantiation.
                 if (matrix == null) {
-                    size = 1000;
-                    matrix = new int[size][size];
+                    int x = Integer.parseInt(vals[0]);
+                    int y = Integer.parseInt(vals[1]);
+                    size = x;
+                    matrix = new int[x][y];
                     log10 = (int) Math.floor(Math.log10(size * size)) + 1;
                     numberFormat = String.format("%%%dd", log10);
+                    
+                    continue;
                 }
 
                 for (int col = 0; col < size; col++) {
