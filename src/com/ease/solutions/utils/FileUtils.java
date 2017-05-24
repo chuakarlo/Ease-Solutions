@@ -31,7 +31,7 @@ public class FileUtils {
 
                 // Lazy instantiation.
                 if (matrix == null) {
-                    size = vals.length;
+                    size = 1000;
                     matrix = new int[size][size];
                     log10 = (int) Math.floor(Math.log10(size * size)) + 1;
                     numberFormat = String.format("%%%dd", log10);
@@ -45,7 +45,7 @@ public class FileUtils {
             }
         }
     }
-    
+
     public int[][] getMatrix() {
         return matrix;
     }

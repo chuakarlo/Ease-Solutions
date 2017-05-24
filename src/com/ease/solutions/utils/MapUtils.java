@@ -8,7 +8,7 @@ import com.ease.solutions.Main;
 
 public class MapUtils {
 
-    private static boolean[][] visited = new boolean[4][4];
+    private static boolean[][] visited = new boolean[1000][1000];
 
     private List<Integer> st = new ArrayList<Integer>();
 
@@ -17,6 +17,8 @@ public class MapUtils {
     private static List<Integer> max = new ArrayList<Integer>();
 
     public void traverse(int[][] matrix, Point p) {
+        boolean lookUpFlag = false;
+        boolean isTraverse = true;
         st.add(matrix[p.x][p.y]);
 
         for (int i = 0; i < matrix.length; i++) {
@@ -33,8 +35,12 @@ public class MapUtils {
             int index = (4 * neighbors.get(i).x) + neighbors.get(i).y;
 
             if (Main.temp.size() - 1 >= index && Main.temp.get(index) != null) {
-                if (st.get(st.size() - 1) > Main.temp.get(i).get(0))
+                if (Main.temp.get(index).size() != 0 && st.get(st.size() - 1) > Main.temp.get(index).get(0)) {
+                    lookUpFlag = true;
                     st.addAll(Main.temp.get(index));
+                } else {
+                    isTraverse = false;
+                }
             } else {
                 traverse(matrix, neighbors.get(i));
             }
@@ -81,10 +87,16 @@ public class MapUtils {
                 }
             }
 
-            st.remove(st.size() - 1);
+            if (isTraverse) {
+                isTraverse = true;
+                if (!lookUpFlag) {
+                    st.remove(st.size() - 1);
+                } else {
+                    lookUpFlag = false;
+                    st.removeAll(Main.temp.get(index));
+                }
+            }
         }
-
-        // System.out.println("qwe " + temp);
     }
 
     public List<Integer> getMaxPath() {
